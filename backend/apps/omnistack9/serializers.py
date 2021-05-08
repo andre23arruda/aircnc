@@ -13,6 +13,13 @@ class UserSerializer(serializers.ModelSerializer):
         return data
 
 
+class UserSessionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = '__all__'
+
+
 class SpotSerializer(serializers.ModelSerializer):
     tech_list = serializers.SerializerMethodField()
     def get_tech_list(self, obj):
@@ -36,10 +43,6 @@ class BookingSerializer(serializers.ModelSerializer):
     tech_list = serializers.SerializerMethodField()
     def get_tech_list(self, obj):
         return [ tech.name for tech in obj.spot.techs.all() ]
-    # ong_email = serializers.ReadOnlyField(source='ong.email')
-    # ong_whatsapp = serializers.ReadOnlyField(source='ong.whatsapp')
-    # ong_city = serializers.ReadOnlyField(source='ong.city')
-    # ong_uf = serializers.ReadOnlyField(source='ong.uf')
 
 
     class Meta:

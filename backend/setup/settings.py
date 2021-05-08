@@ -95,8 +95,8 @@ STATICFILES_DIRS = [ BASE_DIR, 'setup/static' ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-CLOUDINARY = os.environ['CLOUDINARY']
-if CLOUDINARY:
+USE_CLOUDINARY = True
+if USE_CLOUDINARY:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 

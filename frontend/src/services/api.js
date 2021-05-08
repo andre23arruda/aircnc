@@ -1,5 +1,6 @@
 // Altere para o endereço da sua API
-const baseUrl = 'http://192.168.0.15:8000/api/omnistack11/'
+// const baseUrl = 'http://192.168.0.15:8000/api/omnistack9/'
+const baseUrl = 'http://127.0.0.1:8000/api/omnistack9/'
 
 function postApi(route, formData, auth='') {
     return fetch(
@@ -12,6 +13,27 @@ function postApi(route, formData, auth='') {
                 'Authorization': auth,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+            })
+        }
+    )
+    .then(response => response.json())
+}
+
+function postFormDataApi(route, data, auth='') {
+
+    const formData = new FormData()
+    for (var prop in data) {
+        formData.append(prop, data[prop])
+      }
+
+    return fetch(
+        baseUrl + route,
+        {
+            credentials: 'same-origin',
+            method: 'POST',
+            body: formData,
+            headers: new Headers({
+                'Authorization': auth,
             })
         }
     )
@@ -46,4 +68,4 @@ function deleteApi(route, auth='') {
     .then(response => response.json())
 }
 
-export { getApi, postApi, deleteApi }
+export { getApi, postApi, postFormDataApi, deleteApi }

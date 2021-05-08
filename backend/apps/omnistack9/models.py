@@ -27,7 +27,7 @@ class User(models.Model):
 
 class Spot(models.Model):
     id = models.CharField(primary_key=True, max_length=8, default=get_uuid_8_length, editable=False)
-    thumbail = models.ImageField(upload_to='uploads/%Y/%m/%d/', blank=True)
+    thumbnail = models.ImageField(upload_to='uploads/%Y/%m/%d/', blank=True)
     company = models.CharField(max_length=50)
     price = models.DecimalField(decimal_places=2, max_digits=8, blank=True, null=True)
     techs = models.ManyToManyField(Tech, related_name='spot_techs', blank=True, null=True)

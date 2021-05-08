@@ -10,7 +10,8 @@ from rest_framework import pagination
 
 from .models import User, Spot, Tech, Booking
 from .serializers import (
-    UserSerializer, SpotSerializer,
+    UserSerializer, UserSessionSerializer,
+    SpotSerializer,
     TechSerializer, BookingSerializer
 )
 
@@ -21,15 +22,12 @@ def get_techs(techs_text: str):
         Retorna lista de Techs
     '''
     techs = techs_text.split(',')
-    techs = [ tech.strip().lower() for tech in techs ]
-    # techs = [ tech.strip() for tech in techs ]
+    techs = [ tech.strip().lower() for tech in techs ] # minúsculo
     techs_obj_list = []
     for tech in techs:
         obj, _ = Tech.objects.get_or_create(name=tech)
         techs_obj_list.append(obj)
     return techs_obj_list
-        # if not Tech.objects.filter(name=tech).exists())
-        # Tech.objects.filter(name=tech).exists():
 
 
 class PaginationFive(pagination.PageNumberPagination):
@@ -47,13 +45,30 @@ class UsersViewSet(viewsets.ModelViewSet):
     search_fields = ['email',]
 
 
+class UserLogin(viewsets.ModelViewSet):
+    '''Login do usuário'''
+    serializer_class = UserSessionSerializer
+    queryset = User.objects.all()
+
+    def create(self, serializer):
+        '''
+            Cria usuário se não existir.
+            Retorna id do usuário
+        '''
+        email = serializer.data['email']
+        user, _ = User.objects.get_or_create(email=email)
+        user_data = { 'id': user.id, 'email': email }
+        return Response(user_data, status=status.HTTP_200_OK)
+        # return Response({'detail': 'User with this email does not exist'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
 class TechsViewSet(viewsets.ModelViewSet):
     '''Registro de tecnologias'''
     queryset = Tech.objects.all()
     serializer_class = TechSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     ordering_fields = ['name']
-    search_fields = ['name',]
+    search_fields = ['name']
 
 
 class SpotsViewSet(viewsets.ModelViewSet):
@@ -64,7 +79,7 @@ class SpotsViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     ordering_fields = ['company']
     search_fields = ['company',]
-    filterset_fields = ['techs',]
+    filterset_fields = ['techs', 'user']
     # pagination_class = PaginationFive
 
     def create(self, serializer):
@@ -76,13 +91,15 @@ class SpotsViewSet(viewsets.ModelViewSet):
                 spot_data = serializer.data
 
                 spot_data_dict = spot_data.dict()
-                spot_data_dict.pop('thumbail', None)
+                spot_data_dict.pop('thumbnail', None)
                 techs_text = spot_data_dict.pop('techs', None)
                 techs = get_techs(techs_text)
+                thumbnail =  None if spot_data['thumbnail'] == 'null' else spot_data['thumbnail']
+                print(thumbnail)
                 spot = Spot.objects.create(
                     **spot_data_dict,
                     user=user,
-                    thumbail=spot_data['thumbail']
+                    thumbnail=thumbnail
                 )
                 spot.techs.set(techs)
                 created_spot = {
@@ -91,6 +108,17 @@ class SpotsViewSet(viewsets.ModelViewSet):
                     **spot_data_dict
                 }
                 return Response(created_spot, status=status.HTTP_200_OK)
+        return Response({'detail': 'Forbidden operation'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+    def destroy(self, request, *args, **kwargs):
+        '''Exclui Spot se houver Authorization no header da requisição'''
+        spot_id = self.kwargs.pop('pk', None)
+        if 'Authorization' in self.request.headers:
+            id = self.request.headers['Authorization']
+            spot = get_object_or_404(Spot, pk=spot_id)
+            spot.delete()
+            return Response({'detail': 'Objeto deletado'}, status=status.HTTP_200_OK)
         return Response({'detail': 'Forbidden operation'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
