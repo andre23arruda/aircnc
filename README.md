@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="AirCnC" title="#delicinha" src="web/src/assets/logo.svg" width="200px" />
+    <img alt="AirCnC" title="#delicinha" src="mobile/src/assets/logo.png" width="200px" />
 </h1>
 
 <h4 align="center">
@@ -23,6 +23,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Django](https://www.djangoproject.com/)
 - [Django-Rest-Framework](https://www.django-rest-framework.org/)
+- [Cloudinary](https://cloudinary.com/)
 - [React](https://reactjs.org)
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
@@ -54,6 +55,9 @@ Repectivamente:
 ##### Esse SEU_IPV4 é seu IPv4 encontrado no terminal com ipconfig/all. Necessário para o seu pc servir os dados da API para os dispostivos da sua rede.
 Deixe o runserver rodando, ele é a API que fornecerá as informações
 ![API 0](/images/api_0.png?raw=true)
+
+##OBS:
+Usei o cloudinary para salvar as imagens dos Spots.
 
 #### Para o frontend é necessário ter o node e o yarn instalados na máquina
 No terminal, rodar:

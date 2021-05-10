@@ -122,6 +122,31 @@ class SpotsViewSet(viewsets.ModelViewSet):
         return Response({'detail': 'Forbidden operation'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
+    def get_queryset(self):
+        queryset = Spot.objects.all()
+        query_params = self.request.query_params.dict()
+        if 'techsfilter' in query_params:
+            techs = query_params['techsfilter']
+            techs_name = techs.split('-')
+            queryset = queryset.filter(techs__name__in=techs_name)
+        return queryset
+
+class SpotsTechsViewSet(viewsets.ModelViewSet):
+    '''Registro de spots'''
+    queryset = Spot.objects.all()
+    serializer_class = SpotSerializer
+    parser_classes = [MultiPartParser, FormParser]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    ordering_fields = ['company']
+    http_method_names = ['get']
+
+    def get_queryset(self):
+        techs = self.request.query_params.dict()
+        print(techs)
+        # queryset = Spot.objects.all()
+        queryset = Spot.objects.filter()
+        return queryset
+
 class BookingsViewSet(viewsets.ModelViewSet):
     '''Registro de tecnologias'''
     queryset = Booking.objects.all()

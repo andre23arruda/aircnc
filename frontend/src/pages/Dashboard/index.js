@@ -19,7 +19,6 @@ function Dashboard() {
         async function loadSpots() {
             const response = await getApi(`spots/?user=${ user_id }`)
             setSpots(response)
-            console.log(response)
         }
 
         loadSpots()

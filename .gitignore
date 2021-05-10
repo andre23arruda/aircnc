@@ -8,6 +8,7 @@ env.py
 .venv
 env/
 venv/
+local_tests.py
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
