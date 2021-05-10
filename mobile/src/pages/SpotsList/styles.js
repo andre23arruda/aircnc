@@ -4,7 +4,8 @@ export default  StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 50,
-        paddingHorizontal: 18,
+        paddingHorizontal: 5,
+        marginBottom: 45,
     },
 
     header: {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import logoImg from '../../assets/logo.png'
 import styles from './styles'
@@ -17,7 +17,6 @@ function SpotsList() {
     const route = useRoute()
     const userParams = route.params
     const techs = userParams.techs
-    console.log(userParams)
 
  	return (
         <View style={ styles.container }>
@@ -33,7 +32,9 @@ function SpotsList() {
             </View>
 
             <View style={ styles.spotsList }>
-                {techs.map(tech => <Spots key={ tech } tech={ tech } />)}
+                <ScrollView>
+                    {techs.map(tech => <Spots key={ tech } tech={ tech } />)}
+                </ScrollView>
             </View>
 
         </View>
