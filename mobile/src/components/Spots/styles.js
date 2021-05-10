@@ -7,5 +7,15 @@ export default  StyleSheet.create({
         paddingHorizontal: 24,
     },
 
+    title: {
+        fontSize: 18,
+    },
+
+    bold: {
+        fontWeight: 'bold',
+        fontSize: 22,
+    },
+
+
 
 })

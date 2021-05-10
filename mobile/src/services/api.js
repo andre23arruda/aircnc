@@ -20,6 +20,7 @@ function postApi(route, formData, auth='') {
 
 
 function getApi(route, auth='') {
+    console.log(baseUrl + route)
     return fetch(
         baseUrl + route,
         {

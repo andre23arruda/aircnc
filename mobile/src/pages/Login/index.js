@@ -18,7 +18,7 @@ function Login() {
 	const [techs, setTechs] = useState([])
 
 	function splitTechs(techsText) {
-		const techsArray = techsText.split(',').map(tech => tech.trim())
+		const techsArray = techsText.split(',').map(tech => tech.trim().toLowerCase())
 		setTechs(techsArray)
 	}
 
@@ -34,7 +34,7 @@ function Login() {
 				navigation.navigate('SpotsList', {
 					user_id: response.id,
 					user_email: response.email,
-					user_techs: techs,
+					techs: techs,
 				})
             } else {
                 showAlert('Erro no login. Tente novamente.')
