@@ -59,7 +59,8 @@ Repectivamente:
 
 ##### Necessário para o seu pc servir os dados da API para os dispostivos da sua rede.
 Deixe o runserver rodando, ele é a API que fornecerá as informações
-![API 0](/images/api_1.png?raw=true)
+![API 0](/images/api_0.png?raw=true)
+![API 1](/images/api_1.png?raw=true)
 
 ##OBS:
 Usei o cloudinary para salvar as imagens dos Spots.
