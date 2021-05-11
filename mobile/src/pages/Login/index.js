@@ -18,8 +18,8 @@ function Login() {
 	const [techs, setTechs] = useState([])
 
 	function splitTechs(techsText) {
-		const techsArray = techsText.split(',').map(tech => tech.trim().toLowerCase())
-		setTechs(techsArray)
+		let techsArray = techsText.split(',').map(tech => tech.trim().toLowerCase())
+		setTechs([...new Set(techsArray)])
 	}
 
 	async function submitLogin(event) {
@@ -30,7 +30,6 @@ function Login() {
         const response = await postApi('sessions/', formData)
         try {
             if (response.id) {
-				console.log(response)
 				navigation.navigate('SpotsList', {
 					user_id: response.id,
 					user_email: response.email,
@@ -54,9 +53,9 @@ function Login() {
 					placeholder="Seu email"
 					keyboardType="email-address"
 					autoCapitalize="none"
-					autoCaorrect={ false }
+					autoCorrect={ false }
 					onChangeText={ setEmail }
-					>
+				>
 				</TextInput>
 
 				<Text style={ styles.inputLabel }>Tecnologias *</Text>

@@ -10,9 +10,14 @@ import styles from './styles'
 const NO_THUMBNAIL = 'https://res.cloudinary.com/utils-cloudinary/image/upload/v1620454863/media/ex2_xdhmga.jpg'
 
 
-function Spots({ tech }) {
+function Spots({ tech, userParams }) {
+	const navigation = useNavigation()
 
 	const [spots, setSpots] = useState([])
+
+	function navigateToBooking(spot_id) {
+        navigation.navigate('Booking', { spot_id, userParams })
+    }
 
 	useEffect(() => {
 		async function loadSpots() {
@@ -54,7 +59,12 @@ function Spots({ tech }) {
 								style={ styles.button }
 								onPress={ () => {} }
 							>
-								<Text style={ styles.buttonText }>Solicitar reserva</Text>
+								<Text
+									onPress={ () => navigateToBooking(item.id) }
+									style={ styles.buttonText }
+								>
+									Solicitar reserva
+								</Text>
 							</TouchableOpacity>
 
 						</View>

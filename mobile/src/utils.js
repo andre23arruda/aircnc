@@ -1,8 +1,8 @@
 import { Alert } from 'react-native'
 
-function showAlert(message) {
+function showAlert(message, title='Algo deu errado') {
     Alert.alert(
-        'Algo deu errado',
+        title,
         message,
         [
             {
@@ -15,12 +15,25 @@ function showAlert(message) {
 }
 
 function toTitleCase(str) {
-    return str.replace(
-      /\w\S*/g,
-      function(txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      }
-    );
-  }
+  	return str.replace(
+		/\w\S*/g,
+		function(txt) {
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+		}
+    )
+}
 
-export { showAlert, toTitleCase }
+
+function getDateFormat(date){
+	const day = String(date.getDate()).padStart(2, '0')
+	const month = String(date.getMonth()).padStart(2, '0')
+    return `${ day }/${ month }/${ date.getFullYear() }`
+}
+
+function getDateFormatToSubmit(date){
+	const day = String(date.getDate()).padStart(2, '0')
+	const month = String(date.getMonth()).padStart(2, '0')
+    return `${ date.getFullYear() }-${ month }-${ day }`
+}
+
+export { showAlert, toTitleCase, getDateFormat, getDateFormatToSubmit }

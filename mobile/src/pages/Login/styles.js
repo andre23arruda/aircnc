@@ -14,7 +14,6 @@ export default  StyleSheet.create({
         alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center',
-
     },
 
     inputLabel: {
@@ -45,14 +44,4 @@ export default  StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     },
-
-
-
-
-
-
-
-
-
-
 })

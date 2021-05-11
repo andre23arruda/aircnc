@@ -33,7 +33,7 @@ function SpotsList() {
 
             <View style={ styles.spotsList }>
                 <ScrollView>
-                    {techs.map(tech => <Spots key={ tech } tech={ tech } />)}
+                    {techs.map(tech => <Spots key={ tech } tech={ tech } userParams={ userParams } />)}
                 </ScrollView>
             </View>
 

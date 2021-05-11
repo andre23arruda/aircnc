@@ -5,7 +5,7 @@ from django.conf.urls.static import static # para servir mídia
 from rest_framework import routers
 from omnistack9.views import (
     UsersViewSet, UserLogin,
-    SpotsViewSet, SpotsTechsViewSet,
+    SpotsViewSet,
     TechsViewSet, BookingsViewSet
 )
 
@@ -14,7 +14,6 @@ router = routers.DefaultRouter()
 router.register('omnistack9/users', UsersViewSet, basename='Users')
 router.register('omnistack9/sessions', UserLogin, basename='Sessions')
 router.register('omnistack9/spots', SpotsViewSet, basename='Spots')
-router.register('omnistack9/spots-techs', SpotsTechsViewSet, basename='SpotsByTech')
 router.register('omnistack9/techs', TechsViewSet, basename='Techs')
 router.register('omnistack9/bookings', BookingsViewSet, basename='Bookings')
 

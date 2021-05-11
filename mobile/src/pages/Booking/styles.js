@@ -3,74 +3,60 @@ import { StyleSheet } from 'react-native';
 export default  StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 50,
+        paddingTop: 20,
         paddingHorizontal: 24,
-    },
-
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
     },
 
-    headerText: {
-        fontSize: 15,
-        color: '#737380',
-    },
-
-    headerTextBold: {
-        fontWeight: 'bold',
+    form: {
+        marginTop: 50,
+        alignSelf: 'stretch',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     title: {
-        fontSize: 30,
-        marginBottom: 16,
-        marginTop: 48,
-        color: '#13131a',
+        textAlign: 'center',
+        fontSize: 28,
         fontWeight: 'bold',
+        marginBottom: 20,
     },
 
-    description: {
-        fontSize: 16,
-        lineHeight: 24,
-        color: '#737380'
-    },
-
-    incidentsList: {
-        marginTop: 32,
-    },
-
-    incident: {
-        padding: 24,
-        borderRadius: 8,
-        backgroundColor: '#FFF',
-        marginBottom: 16,
-    },
-
-    incidentProp: {
-        fontSize: 14,
-        color: '#41414d',
-        fontWeight: 'bold',
-    },
-
-    incidentValue: {
-        marginTop: 8,
-        fontSize: 15,
-        marginBottom: 15,
-        color: '#737380',
-    },
-
-    detailsButton: {
+    dateContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
-
     },
 
-    detailsButtonText: {
-        color: '#e02041',
-        fontSize: 15,
+    dateButton: {
+        width: '10%',
+        marginRight: '2%'
+    },
+
+    dateText: {
+        width: '78%',
+        borderColor: '#ccc',
+        borderWidth: 1,
+        padding: 12,
+        borderRadius: 3,
+    },
+
+    button: {
+        width: '90%',
+        backgroundColor: '#e02041',
+        padding: 12,
+        borderRadius: 3,
+        marginTop: 15,
+    },
+
+    buttonText: {
+        color: '#FFF',
         fontWeight: 'bold',
+        textAlign: 'center',
     },
+
+    buttonCancel: {
+        backgroundColor: '#ccc',
+        marginTop: 10,
+    }
 
 })
