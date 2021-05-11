@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="AirCnC" title="#delicinha" src="mobile/src/assets/logo.png" width="200px" />
+    <img alt="AirCnC" title="#delicinha" src="frontend/src/assets/logo-2.svg" width="200px" />
 </h1>
 
 <h4 align="center">
