@@ -31,7 +31,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projeto
 
 ## Instalação
-#### Para o backend, é necessário ter o Python instalado em sua máquina. De preferência 3.6 para cima.
+### Para o backend, é necessário ter o Python instalado em sua máquina. De preferência 3.6 para cima.
 
 Primeiro:
 - Abrir env_example.py
@@ -44,7 +44,7 @@ cd backend_django
 python -m venv venv
 . venv/Scripts/activate
 pip install -r requirements.txt
-python manage.py runserver SEU_IPV4
+python manage.py runserver SEU_IP
 ```
 Repectivamente:
 - Para entrar na pasta dos arquivos do backend
@@ -52,14 +52,19 @@ Repectivamente:
 - Ativar o ambiente virtual
 - Instalar todos os pacotes necessários para rodar a aplicação
 - Rodar API
-##### Esse SEU_IPV4 é seu IPv4 encontrado no terminal com ipconfig/all. Necessário para o seu pc servir os dados da API para os dispostivos da sua rede.
+##### Esse SEU_IP é seu IPv4 encontrado no terminal com ipconfig/all ou também quando executar expo start no mobile.
+<h1 align="center">
+  <img alt="AirCnC" src="images/expo.png" />
+</h1>
+
+##### Necessário para o seu pc servir os dados da API para os dispostivos da sua rede.
 Deixe o runserver rodando, ele é a API que fornecerá as informações
-![API 0](/images/api_0.png?raw=true)
+![API 0](/images/api_1.png?raw=true)
 
 ##OBS:
 Usei o cloudinary para salvar as imagens dos Spots.
 
-#### Para o frontend é necessário ter o node e o yarn instalados na máquina
+### Para o frontend é necessário ter o node e o yarn instalados na máquina
 No terminal, rodar:
 ```sh
 cd web
@@ -72,13 +77,13 @@ Repectivamente:
 Depois:
 - Abrir api.js e adicionar o endereço da sua API (Ex: 192.168.0.1)
 
-![Web 0](/images/web_0.png?raw=true)
-
 ![Web 1](/images/web_1.png?raw=true)
 
-![Web 2](/images/web_2.png?raw=true)
+![Web 2](/images/web_1.png?raw=true)
 
-#### Para o mobile é preciso ter o node, yarn e expo instalados na máquina e ter o expo instalado no celular
+![Web 3](/images/web_2.png?raw=true)
+
+### Para o mobile é preciso ter o node, yarn e expo instalados na máquina e ter o expo instalado no celular
 Fica melhor rodar no celular para não comer a memória do pc com emulador
 No terminal, rodar:
 ```sh

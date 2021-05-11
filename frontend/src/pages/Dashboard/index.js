@@ -22,7 +22,7 @@ function Dashboard() {
         }
 
         loadSpots()
-    }, [])
+    }, [user_id])
 
     async function deleteSpot(spot_id) {
         await deleteApi(`spots/${ spot_id }/`)

@@ -1,6 +1,6 @@
 // Altere para o endereço da sua API
-// const baseUrl = 'http://192.168.0.15:8000/api/omnistack9/'
-const baseUrl = 'http://127.0.0.1:8000/api/omnistack9/'
+const baseUrl = 'http://192.168.0.15:8000/api/omnistack9/'
+// const baseUrl = 'http://127.0.0.1:8000/api/omnistack9/'
 
 function postApi(route, formData, auth='') {
     return fetch(
