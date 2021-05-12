@@ -31,7 +31,7 @@ function Booking() {
     }
 
     function navigateToSpotsList() {
-        navigation.navigate('SpotsList',userParams)
+        navigation.navigate('SpotsList', userParams)
     }
 
     async function submitBooking(event) {

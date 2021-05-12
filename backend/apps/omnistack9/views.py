@@ -138,6 +138,7 @@ class BookingsViewSet(viewsets.ModelViewSet):
     serializer_class = BookingSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     ordering_fields = ['booking_date']
+    filterset_fields = ['user', 'status']
 
     def create(self, serializer):
         '''Cria Spot se houver Authorization no header da requisição'''
@@ -145,14 +146,28 @@ class BookingsViewSet(viewsets.ModelViewSet):
             id = self.request.headers['Authorization']
             user = User.objects.filter(id=id).first()
             if user:
-                spot_data = serializer.data
-                spot = Booking.objects.create(
-                    **spot_data,
+                booking_data = serializer.data
+                booking = Booking.objects.create(
+                    **booking_data,
                     user=user,
                 )
                 created_booking = {
-                    **spot_data,
+                    **booking_data,
                     'user_id': id
                 }
                 return Response(created_booking, status=status.HTTP_200_OK)
         return Response({'detail': 'Forbidden operation'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+    def get_queryset(self):
+        query_set = Booking.objects.all()
+        if 'Authorization' in self.request.headers:
+            id = self.request.headers['Authorization']
+            user = User.objects.filter(id=id).first()
+            query_params = self.request.query_params.dict()
+            if user:
+                if 'status' in query_params:
+                    query_set = query_set.filter(spot__user_id=id, status=query_params['status'])
+                else:
+                    query_set = query_set.filter(spot__user_id=id)
+        return query_set

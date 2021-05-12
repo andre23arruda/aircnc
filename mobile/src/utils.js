@@ -36,4 +36,9 @@ function getDateFormatToSubmit(date){
     return `${ date.getFullYear() }-${ month }-${ day }`
 }
 
-export { showAlert, toTitleCase, getDateFormat, getDateFormatToSubmit }
+function getDateFormatJson(date){
+    const dateArray = date.split('-').map(d => d.trim())
+    return `${ dateArray[2] }/${ dateArray[1] }/${ dateArray[0] }`
+}
+
+export { showAlert, toTitleCase, getDateFormat, getDateFormatToSubmit, getDateFormatJson }

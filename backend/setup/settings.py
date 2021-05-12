@@ -10,7 +10,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = os.environ['DEBUG']
 ALLOWED_HOSTS = json.loads(os.environ['ALLOWED_HOSTS'])
 
-LOGGING_CONFIG = None
+# LOGGING_CONFIG = None
 
 # Application definition
 INSTALLED_APPS = [

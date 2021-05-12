@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { FiXCircle, FiPower } from 'react-icons/fi'
+import { FiXCircle, FiPower, FiBookmark } from 'react-icons/fi'
 import { notifyWarning } from '../../utils/utils'
 
 import logoImg from '../../assets/logo.svg'
@@ -13,6 +13,7 @@ const NO_THUMBNAIL = 'https://res.cloudinary.com/utils-cloudinary/image/upload/v
 function Dashboard() {
     const history = useHistory()
     const [spots, setSpots] = useState([])
+    const [bookings, setBookings] = useState([])
     const user_id = localStorage.getItem('user_id')
 
     useEffect( () => {
@@ -36,9 +37,32 @@ function Dashboard() {
         notifyWarning(`Sessão finalizada`)
     }
 
+    async function loadBookings() {
+        const response = await getApi(`bookings/?user=${ user_id }&status=R`)
+		setBookings(response)
+	}
+
+    useEffect(() => {
+        loadBookings()
+    }, [])
+
+    useEffect(() => {
+        loadBookings()
+        const interval = setInterval(() => {
+            loadBookings()
+        }, 60000)
+        return () => clearInterval(interval)
+    }, [])
+
   	return (
         <div className="dashboard-container">
-            <img src={ logoImg } alt="AirCnC"/>
+            <header className="header-container">
+                <img src={ logoImg } alt="AirCnC"/>
+                <button className="button  button-small" onClick= { logout }>
+                    <FiPower size={ 18 }/>
+                </button>
+            </header>
+
             <section className="content">
                 <ul className="spot-list">
                     { spots.length > 0 ?
@@ -75,9 +99,12 @@ function Dashboard() {
 
                 </ul>
 
-                <button className="button  button-small" onClick= { logout }>
-                    <FiPower size={ 18 }/>
-                </button>
+                    <Link to="/bookings" className="button button-small">
+                        <FiBookmark size={ 18 }/>
+                        { bookings.length > 0 &&
+                            <span className="circle-notification">{ `${ bookings.length }` }</span>
+                        }
+                    </Link>
 
                 <Link to="/new-spot" className="button">Cadastrar novo spot</Link>
             </section>

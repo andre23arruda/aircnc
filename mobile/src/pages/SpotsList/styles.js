@@ -13,7 +13,7 @@ export default  StyleSheet.create({
         alignItems: 'center',
     },
 
-    headerBackButton: {
+    headerButton: {
         width: '10%',
     },
 
@@ -21,6 +21,28 @@ export default  StyleSheet.create({
         width: '80%',
         height: 32,
         resizeMode: 'contain',
+    },
+
+    buttonText: {
+        color: "#E02545",
+        backgroundColor: "#FFF",
+        width: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        marginBottom: -10,
+        alignSelf: 'flex-end',
+        marginRight: 5,
+        opacity: 0,
+        zIndex: 1000,
+    },
+
+    buttonTextShow: {
+        opacity: 1,
     }
+
+
 
 })

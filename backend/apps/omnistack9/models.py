@@ -8,6 +8,13 @@ def get_uuid_8_length():
     return str(uuid.uuid4())[:8]
 
 
+class StatusChoices(models.TextChoices):
+    '''Status Choices'''
+    choice_1 = 'R', 'Requested'
+    choice_2 = 'A', 'Answered'
+    choice_3 = 'V', 'Viewed'
+
+
 class Tech(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(blank=True, null=True)
@@ -42,6 +49,7 @@ class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_approved = models.BooleanField(default=False)
     booking_date = models.DateField(default=date.today)
+    status = models.CharField(max_length=1, choices=StatusChoices.choices, default='R')
 
     def __str__(self):
-        return f'{ self.company }'
+        return f'{ self.spot }'

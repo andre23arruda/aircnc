@@ -40,10 +40,7 @@ class TechSerializer(serializers.ModelSerializer):
 class BookingSerializer(serializers.ModelSerializer):
 
     user_email = serializers.ReadOnlyField(source='user.email')
-    tech_list = serializers.SerializerMethodField()
-    def get_tech_list(self, obj):
-        return [ tech.name for tech in obj.spot.techs.all() ]
-
+    spot_company = serializers.ReadOnlyField(source='spot.company')
 
     class Meta:
         model = Booking
