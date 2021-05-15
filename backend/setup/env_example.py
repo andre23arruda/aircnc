@@ -1,19 +1,22 @@
 # RENAME THIS FILE TO env.py
-import os, json
+import os, json, socket
 
-def create_allowed_hosts():
+
+def get_ip_address():
+    '''Return IP adress'''
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
+    return ip_address
+
+def get_allowed_hosts():
     '''Create a list of aloowed hosts'''
     IP_PATTERN = '192.168'
-    hosts = ["127.0.0.1", "localhost"]
-    for i in [0, 1]:
-        for j in range(40):
-            hosts.append(f'{ IP_PATTERN }.{ i }.{ j }')
-    return hosts
+    hosts = ['127.0.0.1', 'localhost', get_ip_address()]
 
 
 os.environ['SECRET_KEY'] = '(_nz-7j=$7we1y6$8i%bftxt2l_udez1ou_x7@*_x8t+(0e2lk'
 os.environ['DEBUG'] = 'true'
-os.environ['ALLOWED_HOSTS'] = json.dumps(create_allowed_hosts())
+os.environ['ALLOWED_HOSTS'] = json.dumps(get_allowed_hosts())
 os.environ['LANGUAGE_CODE'] = 'pt-br'
 os.environ['TIME_ZONE'] = 'America/Sao_Paulo'
 
