@@ -10,8 +10,8 @@ def get_ip_address():
 
 def get_allowed_hosts():
     '''Create a list of aloowed hosts'''
-    IP_PATTERN = '192.168'
     hosts = ['127.0.0.1', 'localhost', get_ip_address()]
+    return hosts
 
 
 os.environ['SECRET_KEY'] = '(_nz-7j=$7we1y6$8i%bftxt2l_udez1ou_x7@*_x8t+(0e2lk'
