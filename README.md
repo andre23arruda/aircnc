@@ -79,7 +79,7 @@ Necessário ter o node e o yarn instalados na máquina
 
 #### Segundo: no terminal, rodar
 ```sh
-cd web
+cd frontend
 yarn start
 ```
 Repectivamente:
