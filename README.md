@@ -29,44 +29,55 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Expo](https://expo.io/)
 
 ## 💻 Projeto
+**AirCnc foi feito para conectar empresas que dominam uma e devs que buscam um local para aprender a tecnologia ou apenas alugar um local de trabalho.**
 
 ## Instalação
-### Para o backend, é necessário ter o Python instalado em sua máquina. De preferência 3.6 para cima.
+## Backend
+Necessário ter o Python instalado em sua máquina. De preferência 3.6 para cima.
 
-Primeiro:
-- Abrir env_example.py
-- Editar esse arquivo conforme o que está escrito nele
-- Renomear para env.py
+#### Primeiro: renomear arquivo com variáveis de ambiente
+-  **Renomear _backend/setup/env_example.py_ para _backend/setup/env.py_**
 
-No terminal, rodar:
+#### Segundo: no terminal, rodar
 ```sh
 cd backend_django
 python -m venv venv
 . venv/Scripts/activate
 pip install -r requirements.txt
-python manage.py runserver SEU_IP
+python manage.py migrate
 ```
 Repectivamente:
-- Para entrar na pasta dos arquivos do backend
+- Entrar na pasta dos arquivos do backend
 - Criar um ambiente virtual
 - Ativar o ambiente virtual
 - Instalar todos os pacotes necessários para rodar a aplicação
-- Rodar API
-##### Esse SEU_IP é seu IPv4 encontrado no terminal com ipconfig/all ou também quando executar expo start no mobile.
-<h1 align="center">
-  <img alt="AirCnC" src="images/expo.png" />
-</h1>
+- Executar as migrações
 
-##### Necessário para o seu pc servir os dados da API para os dispostivos da sua rede.
-Deixe o runserver rodando, ele é a API que fornecerá as informações
+#### Terceiro: Obter IPV4 para o seu pc servir os dados da API para os dispostivos da sua rede
+```sh
+python get_IPV4.py
+```
+**Seu IP será exibido em tela. Guarde-o. Será necessário colocá-lo no frontend e no mobile (ROTA_API)**
+
+#### Por fim: deixar a API rodando
+
+```sh
+python manage.py runserver ROTA_API
+```
+
 ![API 0](/images/api_0.png?raw=true)
 ![API 1](/images/api_1.png?raw=true)
 
-##OBS:
-Usei o cloudinary para salvar as imagens dos Spots.
+### OBS:
+Usei o Cloudinary para salvar as imagens dos Spots. Mas dá para rodar a aplicação sem ele.
 
-### Para o frontend é necessário ter o node e o yarn instalados na máquina
-No terminal, rodar:
+## Frontend
+Necessário ter o node e o yarn instalados na máquina
+
+#### Primeiro: adicionar endereço do backend
+- Abrir *frontend/src/services/api.js* e adicionar o endereço da sua API (ROTA_API)
+
+#### Segundo: no terminal, rodar
 ```sh
 cd web
 yarn start
@@ -75,8 +86,6 @@ Repectivamente:
 - Para entrar na pasta dos arquivos do frontend
 - Instalar os pacotes do projeto e rodar
 
-Depois:
-- Abrir api.js e adicionar o endereço da sua API (Ex: 192.168.0.1)
 
 ![Web 1](/images/web_1.png?raw=true)
 
@@ -84,9 +93,13 @@ Depois:
 
 ![Web 3](/images/web_2.png?raw=true)
 
-### Para o mobile é preciso ter o node, yarn e expo instalados na máquina e ter o expo instalado no celular
-Fica melhor rodar no celular para não comer a memória do pc com emulador
-No terminal, rodar:
+## Mobile
+Necessário ter o expo instalado na máquina e ter o expo instalado no celular.
+
+#### Primeiro: adicionar endereço do backend
+- Abrir *frontend/src/services/api.js* e adicionar o endereço da sua API (ROTA_API)
+
+#### Segundo: no terminal, rodar
 ```sh
 cd mobile
 expo start
@@ -96,7 +109,8 @@ Repectivamente:
 - Para entrar na pasta com os arquivos do mobile
 - Instalar pacotes do projeto e rodar
 
-Depois:
-- Abrir api.js e adicionar o endereço da sua API
+#### Terceiro: rodar expo no celular
+- Abrir expo no celular
+- Ler QR code e executar o app
 
 ![Mobile 0](/images/mobile_0.png?raw=true)
