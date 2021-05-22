@@ -31,6 +31,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projeto
 **AirCnc foi feito para conectar empresas que dominam uma e devs que buscam um local para aprender a tecnologia ou apenas alugar um local de trabalho.**
 
+
 ## Instalação
 ## Backend
 Necessário ter o Python instalado em sua máquina. De preferência 3.6 para cima.
@@ -80,11 +81,13 @@ Necessário ter o node e o yarn instalados na máquina
 #### Segundo: no terminal, rodar
 ```sh
 cd frontend
+yarn install
 yarn start
 ```
 Repectivamente:
 - Para entrar na pasta dos arquivos do frontend
-- Instalar os pacotes do projeto e rodar
+- Instalar os pacotes do projeto
+- Rodar
 
 
 ![Web 1](/images/web_1.png?raw=true)
@@ -102,12 +105,14 @@ Necessário ter o expo instalado na máquina e ter o expo instalado no celular.
 #### Segundo: no terminal, rodar
 ```sh
 cd mobile
+yarn install
 expo start
 ```
 
 Repectivamente:
 - Para entrar na pasta com os arquivos do mobile
-- Instalar pacotes do projeto e rodar
+- Instalar pacotes do projeto
+- Rodar
 
 #### Terceiro: rodar expo no celular
 - Abrir expo no celular
