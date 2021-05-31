@@ -79,7 +79,7 @@ python manage.py runserver_ip
 Usei o Cloudinary para salvar as imagens dos Spots, mas não é necessário.
 
 
-## Frontend
+### Frontend
 #### Primeiro: adicionar endereço do backend
 - Abrir *frontend/src/services/api.js* e adicionar o endereço da sua API (ROTA_API)
 
@@ -101,7 +101,7 @@ yarn start
 
 ![Web 3](/images/web_2.png?raw=true)
 
-## Mobile
+### Mobile
 #### Primeiro: adicionar endereço do backend
 - Abrir *mobile/src/services/api.js* e adicionar o endereço da sua API (ROTA_API)
 
