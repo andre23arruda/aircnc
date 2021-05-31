@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="AirCnC" title="#delicinha" src="frontend/src/assets/logo-2.svg" width="200px" />
+    <img alt="AirCnC" src="frontend/src/assets/logo-2.svg" width="200px" />
 </h1>
 
 <h4 align="center">
@@ -13,11 +13,13 @@
 </p>
 
 <p align="center">
-  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#instalação">Instalação</a>
 </p>
 
-## :rocket: Tecnologias
+
+## 🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
@@ -31,38 +33,42 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projeto
 **AirCnc foi feito para conectar empresas que dominam uma e devs que buscam um local para aprender a tecnologia ou apenas alugar um local de trabalho.**
 
-
 ## Instalação
-## Backend
-Necessário ter o Python instalado em sua máquina. De preferência 3.6 para cima.
+### Pré requisitos
+Ter instalado:
+- [Python](https://www.python.org/downloads/)
+- [Node](https://nodejs.org/en/download/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/)
 
+### Backend
 #### Primeiro: renomear arquivo com variáveis de ambiente
 -  **Renomear _backend/setup/env_example.py_ para _backend/setup/env.py_**
 
 #### Segundo: no terminal, rodar
 ```sh
-cd backend_django
+# Entrar na pasta dos arquivos do backend
+cd backend
+# Criar um ambiente virtual
 python -m venv venv
-. venv/Scripts/activate
-pip install -r requirements.txt
-python manage.py migrate
-```
-Repectivamente:
-- Entrar na pasta dos arquivos do backend
-- Criar um ambiente virtual
-- Ativar o ambiente virtual
-- Instalar todos os pacotes necessários para rodar a aplicação
-- Executar as migrações
 
-#### Terceiro: Obter endereço para o seu pc servir os dados da API para os dispostivos da sua rede
-```sh
+# Ativar o ambiente virtual
+. venv/Scripts/activate
+
+# Instalar os pacotes necessários
+pip install -r requirements.txt
+
+# Executar as migrações
+python manage.py migrate
+
+# Obter endereço para o seu pc servir os dados da API para os dispostivos da sua rede
 python get_api_route.py
 ```
-**O endereço será exibido em tela. Guarde-o. Será necessário colocá-lo no frontend e no mobile (ROTA_API)**
+**O endereço será exibido em tela. Guarde-o. Será necessário colocá-lo no frontend como ROTA_API**
 
 #### Por fim: deixar a API rodando
 
 ```sh
+# Já executará backend com seu endreço IP na rede
 python manage.py runserver_ip
 ```
 
@@ -70,25 +76,24 @@ python manage.py runserver_ip
 ![API 1](/images/api_1.png?raw=true)
 
 ### OBS:
-Usei o Cloudinary para salvar as imagens dos Spots. Mas dá para rodar a aplicação sem ele.
+Usei o Cloudinary para salvar as imagens dos Spots, mas não é necessário.
+
 
 ## Frontend
-Necessário ter o node e o yarn instalados na máquina
-
 #### Primeiro: adicionar endereço do backend
 - Abrir *frontend/src/services/api.js* e adicionar o endereço da sua API (ROTA_API)
 
 #### Segundo: no terminal, rodar
 ```sh
-cd frontend
+# Entrar na pasta dos arquivos do frontend
+cd web
+
+# Instalar os pacotes do projeto
 yarn install
+
+# Rodar
 yarn start
 ```
-Repectivamente:
-- Para entrar na pasta dos arquivos do frontend
-- Instalar os pacotes do projeto
-- Rodar
-
 
 ![Web 1](/images/web_1.png?raw=true)
 
@@ -97,25 +102,24 @@ Repectivamente:
 ![Web 3](/images/web_2.png?raw=true)
 
 ## Mobile
-Necessário ter o expo instalado na máquina e ter o expo instalado no celular.
-
 #### Primeiro: adicionar endereço do backend
 - Abrir *mobile/src/services/api.js* e adicionar o endereço da sua API (ROTA_API)
 
 #### Segundo: no terminal, rodar
 ```sh
+# Entrar na pasta dos arquivos do frontend
 cd mobile
+
+# Instalar os pacotes do projeto
 yarn install
+
+# Rodar
 expo start
 ```
-
-Repectivamente:
-- Para entrar na pasta com os arquivos do mobile
-- Instalar pacotes do projeto
-- Rodar
 
 #### Terceiro: rodar expo no celular
 - Abrir expo no celular
 - Ler QR code e executar o app
+
 
 ![Mobile 0](/images/mobile_0.png?raw=true)
