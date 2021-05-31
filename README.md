@@ -86,7 +86,7 @@ Usei o Cloudinary para salvar as imagens dos Spots, mas não é necessário.
 #### Segundo: no terminal, rodar
 ```sh
 # Entrar na pasta dos arquivos do frontend
-cd web
+cd frontend
 
 # Instalar os pacotes do projeto
 yarn install
