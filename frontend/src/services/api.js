@@ -1,4 +1,4 @@
-const ROTA_API = `192.168.0.20`
+const ROTA_API = `192.168.0.22`
 const baseUrl = `http://${ ROTA_API }:8000/api/omnistack9/`
 
 function postApi(route, formData, auth='') {

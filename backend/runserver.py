@@ -36,7 +36,7 @@ def put_ip_in_api_file(folder: str):
 
 def main():
     '''Run'''
-    subprocess.call(f'{ get_python_path() }\Scripts\python.exe manage.py runserver { get_ip_address() }:{ PORT }')
+    subprocess.call(f'python manage.py runserver { get_ip_address() }:{ PORT }', shell=True)
 
 
 if __name__ == '__main__':

@@ -31,7 +31,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Expo](https://expo.io/)
 
 ## 💻 Projeto
-**AirCnc foi feito para conectar empresas que dominam uma e devs que buscam um local para aprender a tecnologia ou apenas alugar um local de trabalho.**
+**AirCnc foi feito para conectar empresas que dominam uma tecnologia e devs que buscam um local para aprender ou apenas alugar um local de trabalho.**
 
 ## Instalação
 ### Pré requisitos
@@ -41,8 +41,8 @@ Ter instalado:
 - [Yarn](https://classic.yarnpkg.com/en/docs/install/)
 
 ### Backend
-#### Primeiro: renomear arquivo com variáveis de ambiente
--  **Renomear _backend/setup/env_example.py_ para _backend/setup/env.py_**
+#### Primeiro: modificar variáveis de ambiente (se houver)
+-  **_backend/setup/env_example.py_**
 
 #### Segundo: no terminal, rodar
 ```sh
@@ -54,6 +54,7 @@ python -m venv venv
 
 # Ativar o ambiente virtual
 . venv/Scripts/activate
+# ou . venv/bin/activate
 
 # Instalar os pacotes necessários
 pip install -r requirements.txt
@@ -62,7 +63,7 @@ pip install -r requirements.txt
 python manage.py migrate
 
 # Rodar backend
-python runserver.py
+. run.sh
 ```
 
 ![API 0](/images/api_0.png?raw=true)
@@ -94,7 +95,7 @@ yarn start
 ### Mobile
 #### No terminal, rodar
 ```sh
-# Entrar na pasta dos arquivos do frontend
+# Entrar na pasta dos arquivos do projeto mobile
 cd mobile
 
 # Instalar os pacotes do projeto
